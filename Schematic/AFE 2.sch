@@ -60,8 +60,8 @@ value="
 "
 spice_ignore=false}
 C {sky130_fd_pr/pfet_01v8.sym} 630 -250 0 0 {name=Msf
-W=1
-L=0.15
+W=0.8
+L=1.2
 nf=1
 mult=1
 ad="'int((nf+1)/2) * W/nf * 0.29'" 
@@ -74,8 +74,8 @@ model=pfet_01v8
 spiceprefix=X
 }
 C {sky130_fd_pr/pfet_01v8.sym} 630 -440 0 0 {name=Mb1
-W=1
-L=0.15
+W=2.4
+L=2.4
 nf=1
 mult=1
 ad="'int((nf+1)/2) * W/nf * 0.29'" 
@@ -87,11 +87,11 @@ sa=0 sb=0 sd=0
 model=pfet_01v8
 spiceprefix=X
 }
-C {sky130_fd_pr/cap_mim_m3_1.sym} 770 -340 3 0 {name=C1 model=cap_mim_m3_1 W=16 L=16 MF=1 spiceprefix=X}
-C {sky130_fd_pr/cap_mim_m3_1.sym} 1050 -250 0 0 {name=C2 model=cap_mim_m3_1 W=4 L=4 MF=1 spiceprefix=X}
+C {sky130_fd_pr/cap_mim_m3_1.sym} 770 -340 3 0 {name=C1 model=cap_mim_m3_1 W=16 L=15 MF=2 spiceprefix=X}
+C {sky130_fd_pr/cap_mim_m3_1.sym} 1050 -250 0 0 {name=C2 model=cap_mim_m3_1 W=4 L=3 MF=2 spiceprefix=X}
 C {sky130_fd_pr/pfet_01v8.sym} 870 -250 0 0 {name=Mr
-W=1
-L=0.15
+W=0.8
+L=0.7
 nf=1
 mult=1
 ad="'int((nf+1)/2) * W/nf * 0.29'" 
@@ -104,9 +104,9 @@ model=pfet_01v8
 spiceprefix=X
 }
 C {sky130_fd_pr/pfet_01v8.sym} 1170 -460 0 0 {name=Mdp
-W=1.5
-L=3.2
-nf=1
+W=1
+L=0.3
+nf=2
 mult=1
 ad="'int((nf+1)/2) * W/nf * 0.29'" 
 pd="'2*int((nf+1)/2) * (W/nf + 0.29)'"
@@ -118,8 +118,8 @@ model=pfet_01v8
 spiceprefix=X
 }
 C {sky130_fd_pr/nfet_01v8.sym} 1170 -140 0 0 {name=Mdn
-W=1.5
-L=3.2
+W=1
+L=0.15
 nf=1 
 mult=1
 ad="'int((nf+1)/2) * W/nf * 0.29'" 
@@ -135,7 +135,7 @@ C {sky130_fd_pr/pfet_01v8.sym} 1380 -460 0 0 {name=MONp
 W=1.5
 L=3.2
 nf=1
-mult=1
+mult=4
 ad="'int((nf+1)/2) * W/nf * 0.29'" 
 pd="'2*int((nf+1)/2) * (W/nf + 0.29)'"
 as="'int((nf+2)/2) * W/nf * 0.29'" 
@@ -149,7 +149,7 @@ C {sky130_fd_pr/nfet_01v8.sym} 1380 -140 0 0 {name=MONn
 W=1.5
 L=3.2
 nf=1 
-mult=2
+mult=1
 ad="'int((nf+1)/2) * W/nf * 0.29'" 
 pd="'2*int((nf+1)/2) * (W/nf + 0.29)'"
 as="'int((nf+2)/2) * W/nf * 0.29'" 
@@ -164,11 +164,11 @@ C {code_shown.sym} 40 -730 0 0 {name=s1 only_toplevel=false value="
 .temp 27
 
 * Case #1 -> 100 Hz
-Vin vin 0 SIN(0 0.3 100 0 0) 			
+Vin vin 0 SIN(0 0.5 100 0 0) 			
 Vreset vreset 0 PULSE(1.8 0 0 1u 1u 900u 1000u)
 
 * Case #2 -> 10 Hz
-*Vin vin 0 SIN(0 0.3 10 0 0) 			
+*Vin vin 0 SIN(0 0.5 10 0 0) 			
 *Vreset vreset 0 PULSE(1.8 0 0 100u 100u 9m 10m)
 
 * Case #3 -> 1 Hz
@@ -178,7 +178,7 @@ Vreset vreset 0 PULSE(1.8 0 0 1u 1u 900u 1000u)
 .control
 save all
 
-*Case #1 -> Run 40 ms
+* Case #1 -> Run 40 ms
 tran 1u 0.04
 
 * Case #2 -> Run 400 ms
@@ -189,6 +189,8 @@ tran 1u 0.04
 
 
 plot vin vout
+plot vdiff vout
+plot vsf p1 vdiff
 
 .endc"
 
@@ -219,8 +221,8 @@ C {gnd.sym} 1000 -590 0 0 {name=l7 lab=GND}
 C {lab_pin.sym} 860 -720 0 0 {name=p18 sig_type=std_logic lab=Vdd}
 C {lab_pin.sym} 930 -720 0 0 {name=p19 sig_type=std_logic lab=Vb1}
 C {lab_pin.sym} 1000 -720 0 0 {name=p22 sig_type=std_logic lab=Vdn}
-C {vsource.sym} 1000 -650 0 0 {name=vdn value=0.45 savecurrent=false}
-C {vsource.sym} 1070 -650 0 0 {name=voffn value=0.5 savecurrent=false}
+C {vsource.sym} 1000 -650 0 0 {name=vdn value=0.4 savecurrent=false}
+C {vsource.sym} 1070 -650 0 0 {name=voffn value=0.3 savecurrent=false}
 C {lab_pin.sym} 1070 -720 0 0 {name=p24 sig_type=std_logic lab=Vonn}
 C {lab_pin.sym} 890 -340 1 0 {name=p10 sig_type=std_logic lab=P1}
 C {lab_pin.sym} 820 -250 0 0 {name=p6 sig_type=std_logic lab=Vreset}
