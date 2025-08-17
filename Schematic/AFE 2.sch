@@ -60,8 +60,8 @@ value="
 "
 spice_ignore=false}
 C {sky130_fd_pr/pfet_01v8.sym} 630 -250 0 0 {name=Msf
-W=0.8
-L=1.2
+W=1
+L=0.15
 nf=1
 mult=1
 ad="'int((nf+1)/2) * W/nf * 0.29'" 
@@ -74,8 +74,8 @@ model=pfet_01v8
 spiceprefix=X
 }
 C {sky130_fd_pr/pfet_01v8.sym} 630 -440 0 0 {name=Mb1
-W=2.4
-L=2.4
+W=1
+L=0.15
 nf=1
 mult=1
 ad="'int((nf+1)/2) * W/nf * 0.29'" 
@@ -90,8 +90,8 @@ spiceprefix=X
 C {sky130_fd_pr/cap_mim_m3_1.sym} 770 -340 3 0 {name=C1 model=cap_mim_m3_1 W=16 L=15 MF=2 spiceprefix=X}
 C {sky130_fd_pr/cap_mim_m3_1.sym} 1050 -250 0 0 {name=C2 model=cap_mim_m3_1 W=4 L=3 MF=2 spiceprefix=X}
 C {sky130_fd_pr/pfet_01v8.sym} 870 -250 0 0 {name=Mr
-W=0.8
-L=0.7
+W=1
+L=0.15
 nf=1
 mult=1
 ad="'int((nf+1)/2) * W/nf * 0.29'" 
@@ -164,28 +164,28 @@ C {code_shown.sym} 40 -730 0 0 {name=s1 only_toplevel=false value="
 .temp 27
 
 * Case #1 -> 100 Hz
-Vin vin 0 SIN(0 0.5 100 0 0) 			
-Vreset vreset 0 PULSE(1.8 0 0 1u 1u 900u 1000u)
+*Vin vin 0 SIN(0 0.5 100 0 0) 			
+*Vreset vreset 0 PULSE(1.8 0 0 1u 1u 900u 1000u)
 
 * Case #2 -> 10 Hz
 *Vin vin 0 SIN(0 0.5 10 0 0) 			
 *Vreset vreset 0 PULSE(1.8 0 0 100u 100u 9m 10m)
 
 * Case #3 -> 1 Hz
-*Vin vin 0 SIN(0 0.3 1 0 0) 			
-*Vreset vreset 0 PULSE(1.8 0 0 1m 1m 90m 100m)
+Vin vin 0 SIN(0 0.9 1 0 0) 			
+Vreset vreset 0 PULSE(1.8 0 0 1m 1m 90m 100m)
 
 .control
 save all
 
 * Case #1 -> Run 40 ms
-tran 1u 0.04
+*tran 1u 0.04
 
 * Case #2 -> Run 400 ms
 *tran 100u 0.4
 
 * Case #3 -> Run 4 s
-*tran 1m 4
+tran 1m 4
 
 
 plot vin vout

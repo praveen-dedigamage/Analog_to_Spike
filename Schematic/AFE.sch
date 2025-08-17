@@ -50,6 +50,12 @@ N 930 -720 930 -680 {lab=Vb1}
 N 1000 -720 1000 -680 {lab=Vdn}
 N 1070 -720 1070 -680 {lab=Vonn}
 N 1000 -620 1000 -590 {lab=GND}
+N 1220 -700 1220 -680 {lab=Vin}
+N 1220 -620 1220 -600 {lab=GND}
+N 1220 -600 1280 -600 {lab=GND}
+N 1280 -600 1340 -600 {lab=GND}
+N 1340 -620 1340 -600 {lab=GND}
+N 1340 -700 1340 -680 {lab=Vreset}
 C {devices/code.sym} 630 -720 0 0 {name=TT_MODELS
 only_toplevel=true
 format="tcleval( @value )"
@@ -225,3 +231,8 @@ C {lab_pin.sym} 1070 -720 0 0 {name=p24 sig_type=std_logic lab=Vonn}
 C {lab_pin.sym} 890 -340 1 0 {name=p10 sig_type=std_logic lab=P1}
 C {lab_pin.sym} 820 -250 0 0 {name=p6 sig_type=std_logic lab=Vreset}
 C {title.sym} 200 0 0 0 {name=l1 author="Praveen Dedigamage"}
+C {vsource.sym} 1220 -650 0 0 {name=Vin value=0 savecurrent=false}
+C {vsource.sym} 1340 -650 0 0 {name=Vreset value=0 savecurrent=false}
+C {gnd.sym} 1280 -600 0 0 {name=l8 lab=GND}
+C {lab_pin.sym} 1220 -700 0 0 {name=p20 sig_type=std_logic lab=Vin}
+C {lab_pin.sym} 1340 -700 0 0 {name=p21 sig_type=std_logic lab=Vreset}
