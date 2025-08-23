@@ -50,12 +50,6 @@ N 930 -720 930 -680 {lab=Vb1}
 N 1000 -720 1000 -680 {lab=Vdn}
 N 1070 -720 1070 -680 {lab=Vonn}
 N 1000 -620 1000 -590 {lab=GND}
-N 1220 -700 1220 -680 {lab=Vin}
-N 1220 -620 1220 -600 {lab=GND}
-N 1220 -600 1280 -600 {lab=GND}
-N 1280 -600 1340 -600 {lab=GND}
-N 1340 -620 1340 -600 {lab=GND}
-N 1340 -700 1340 -680 {lab=Vreset}
 C {devices/code.sym} 630 -720 0 0 {name=TT_MODELS
 only_toplevel=true
 format="tcleval( @value )"
@@ -66,7 +60,7 @@ value="
 "
 spice_ignore=false}
 C {sky130_fd_pr/pfet_01v8.sym} 630 -250 0 0 {name=Msf
-W=1
+W=0.75
 L=0.15
 nf=1
 mult=1
@@ -80,7 +74,7 @@ model=pfet_01v8
 spiceprefix=X
 }
 C {sky130_fd_pr/pfet_01v8.sym} 630 -440 0 0 {name=Mb1
-W=1
+W=0.75
 L=0.15
 nf=1
 mult=1
@@ -93,10 +87,10 @@ sa=0 sb=0 sd=0
 model=pfet_01v8
 spiceprefix=X
 }
-C {sky130_fd_pr/cap_mim_m3_1.sym} 770 -340 3 0 {name=C1 model=cap_mim_m3_1 W=16 L=16 MF=1 spiceprefix=X}
+C {sky130_fd_pr/cap_mim_m3_1.sym} 770 -340 3 0 {name=C1 model=cap_mim_m3_1 W=16 L=6 MF=1 spiceprefix=X}
 C {sky130_fd_pr/cap_mim_m3_1.sym} 1050 -250 0 0 {name=C2 model=cap_mim_m3_1 W=4 L=4 MF=1 spiceprefix=X}
 C {sky130_fd_pr/pfet_01v8.sym} 870 -250 0 0 {name=Mr
-W=1
+W=0.75
 L=0.15
 nf=1
 mult=1
@@ -112,7 +106,7 @@ spiceprefix=X
 C {sky130_fd_pr/pfet_01v8.sym} 1170 -460 0 0 {name=Mdp
 W=1.5
 L=3.2
-nf=1
+nf=2
 mult=1
 ad="'int((nf+1)/2) * W/nf * 0.29'" 
 pd="'2*int((nf+1)/2) * (W/nf + 0.29)'"
@@ -126,7 +120,7 @@ spiceprefix=X
 C {sky130_fd_pr/nfet_01v8.sym} 1170 -140 0 0 {name=Mdn
 W=1.5
 L=3.2
-nf=1 
+nf=2 
 mult=1
 ad="'int((nf+1)/2) * W/nf * 0.29'" 
 pd="'2*int((nf+1)/2) * (W/nf + 0.29)'"
@@ -140,7 +134,7 @@ spiceprefix=X
 C {sky130_fd_pr/pfet_01v8.sym} 1380 -460 0 0 {name=MONp
 W=1.5
 L=3.2
-nf=1
+nf=2
 mult=1
 ad="'int((nf+1)/2) * W/nf * 0.29'" 
 pd="'2*int((nf+1)/2) * (W/nf + 0.29)'"
@@ -154,8 +148,8 @@ spiceprefix=X
 C {sky130_fd_pr/nfet_01v8.sym} 1380 -140 0 0 {name=MONn
 W=1.5
 L=3.2
-nf=1 
-mult=2
+nf=2 
+mult=1
 ad="'int((nf+1)/2) * W/nf * 0.29'" 
 pd="'2*int((nf+1)/2) * (W/nf + 0.29)'"
 as="'int((nf+2)/2) * W/nf * 0.29'" 
@@ -170,15 +164,15 @@ C {code_shown.sym} 40 -730 0 0 {name=s1 only_toplevel=false value="
 .temp 27
 
 * Case #1 -> 100 Hz
-Vin vin 0 SIN(0 0.3 100 0 0) 			
-Vreset vreset 0 PULSE(1.8 0 0 1u 1u 900u 1000u)
+Vin vin 0 SIN(0 0.9 10 0 0) 			
+*Vreset vreset 0 PULSE(1.8 0 0 1u 1u 900u 1000u)
 
 * Case #2 -> 10 Hz
-*Vin vin 0 SIN(0 0.3 10 0 0) 			
-*Vreset vreset 0 PULSE(1.8 0 0 100u 100u 9m 10m)
+*Vin vin 0 SIN(0 0.9 10 0 0) 			
+Vreset vreset 0 PULSE(1.8 0 0 100u 100u 9m 10m)
 
 * Case #3 -> 1 Hz
-*Vin vin 0 SIN(0 0.3 1 0 0) 			
+*Vin vin 0 SIN(0 0.9 1 0 0) 			
 *Vreset vreset 0 PULSE(1.8 0 0 1m 1m 90m 100m)
 
 .control
@@ -188,7 +182,7 @@ save all
 tran 1u 0.04
 
 * Case #2 -> Run 400 ms
-*tran 100u 0.4
+tran 100u 0.4
 
 * Case #3 -> Run 4 s
 *tran 1m 4
@@ -231,8 +225,3 @@ C {lab_pin.sym} 1070 -720 0 0 {name=p24 sig_type=std_logic lab=Vonn}
 C {lab_pin.sym} 890 -340 1 0 {name=p10 sig_type=std_logic lab=P1}
 C {lab_pin.sym} 820 -250 0 0 {name=p6 sig_type=std_logic lab=Vreset}
 C {title.sym} 200 0 0 0 {name=l1 author="Praveen Dedigamage"}
-C {vsource.sym} 1220 -650 0 0 {name=Vin value=0 savecurrent=false}
-C {vsource.sym} 1340 -650 0 0 {name=Vreset value=0 savecurrent=false}
-C {gnd.sym} 1280 -600 0 0 {name=l8 lab=GND}
-C {lab_pin.sym} 1220 -700 0 0 {name=p20 sig_type=std_logic lab=Vin}
-C {lab_pin.sym} 1340 -700 0 0 {name=p21 sig_type=std_logic lab=Vreset}
