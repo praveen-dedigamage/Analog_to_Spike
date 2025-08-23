@@ -1,36 +1,32 @@
-v {xschem version=3.4.8RC file_version=1.2}
+v {xschem version=3.4.7 file_version=1.2}
 G {}
 K {}
 V {}
 S {}
-F {}
 E {}
-N 270 -300 270 -250 {lab=V_MINUS}
-N 430 -150 430 -120 {lab=GND}
-N 270 -210 270 -180 {lab=GND}
-N 150 -290 150 -260 {lab=GND}
-N 540 -450 540 -420 {lab=GND}
-N 430 -260 430 -210 {lab=#net1}
-N 550 -340 590 -340 {lab=V_OUT}
-N 430 -540 490 -540 {lab=#net2}
-N 430 -540 430 -420 {lab=#net2}
-N 460 -280 460 -240 {lab=#net3}
-N 460 -240 520 -240 {lab=#net3}
-N 520 -240 520 -210 {lab=#net3}
-N 150 -380 150 -350 {lab=V_PLUS}
-N 150 -380 340 -380 {lab=V_PLUS}
-N 520 -150 520 -120 {lab=GND}
-N 540 -540 540 -510 {lab=#net2}
-N 490 -540 540 -540 {lab=#net2}
-N 270 -300 340 -300 {lab=V_MINUS}
-N 580 -340 580 -320 {lab=V_OUT}
-N 580 -260 580 -240 {lab=GND}
-C {/foss/designs/Neuromorphics/Analog_to_Spike/Schematic/OTA.sym} 430 -340 0 0 {name=x1}
-C {vsource.sym} 540 -480 0 0 {name=VDD value=1.8 savecurrent=false}
-C {vsource.sym} 150 -320 0 1 {name=VP value="DC 0 AC 0.5 SIN(0.9 5e-6 10 1 0 0)" savecurrent=false}
-C {vsource.sym} 270 -240 0 0 {name=VN value=0.9 savecurrent=false}
-C {vsource.sym} 430 -180 0 0 {name=VSS value=0 savecurrent=false}
-C {code_shown.sym} 720 -440 0 0 {name=s1 only_toplevel=false value="
+N 350 -250 350 -200 {lab=V_MINUS}
+N 510 -100 510 -70 {lab=GND}
+N 350 -160 350 -130 {lab=GND}
+N 230 -240 230 -210 {lab=GND}
+N 620 -400 620 -370 {lab=GND}
+N 510 -210 510 -160 {lab=#net1}
+N 630 -290 670 -290 {lab=V_OUT}
+N 510 -490 570 -490 {lab=#net2}
+N 510 -490 510 -370 {lab=#net2}
+N 540 -230 540 -190 {lab=#net3}
+N 540 -190 600 -190 {lab=#net3}
+N 600 -190 600 -160 {lab=#net3}
+N 230 -330 230 -300 {lab=V_PLUS}
+N 230 -330 420 -330 {lab=V_PLUS}
+N 600 -100 600 -70 {lab=GND}
+N 620 -490 620 -460 {lab=#net2}
+N 570 -490 620 -490 {lab=#net2}
+N 350 -250 420 -250 {lab=V_MINUS}
+C {vsource.sym} 620 -430 0 0 {name=VDD value=1.8 savecurrent=false}
+C {vsource.sym} 230 -270 0 1 {name=VP value="DC 0 AC 0.5 SIN(0.9 5e-6 10 1 0 0)" savecurrent=false}
+C {vsource.sym} 350 -190 0 0 {name=VN value=0.9 savecurrent=false}
+C {vsource.sym} 510 -130 0 0 {name=VSS value=0 savecurrent=false}
+C {code_shown.sym} 800 -390 0 0 {name=s1 only_toplevel=false value="
 .option savecurrents
 .temp 27
 
@@ -44,19 +40,14 @@ C {code_shown.sym} 720 -440 0 0 {name=s1 only_toplevel=false value="
 .endc
 
 "}
-C {sky130_fd_pr/corner.sym} 730 -640 0 0 {name=CORNER1 only_toplevel=true corner=tt}
-C {gnd.sym} 430 -120 0 0 {name=l1 lab=GND}
-C {gnd.sym} 540 -420 0 0 {name=l2 lab=GND}
-C {gnd.sym} 270 -180 0 0 {name=l3 lab=GND}
-C {gnd.sym} 150 -260 0 0 {name=l4 lab=GND}
-C {lab_pin.sym} 590 -340 2 0 {name=p17 sig_type=std_logic lab=V_OUT}
-C {isource.sym} 520 -180 0 0 {name=I0 value=10n}
-C {gnd.sym} 520 -120 0 0 {name=l5 lab=GND}
-C {lab_pin.sym} 150 -380 0 0 {name=p1 sig_type=std_logic lab=V_PLUS}
-C {lab_pin.sym} 270 -300 0 0 {name=p2 sig_type=std_logic lab=V_MINUS}
-C {capa.sym} 580 -290 0 0 {name=C1
-m=1
-value=1p
-footprint=1206
-device="ceramic capacitor"}
-C {gnd.sym} 580 -240 0 0 {name=l6 lab=GND}
+C {sky130_fd_pr/corner.sym} 810 -590 0 0 {name=CORNER1 only_toplevel=true corner=tt}
+C {gnd.sym} 510 -70 0 0 {name=l1 lab=GND}
+C {gnd.sym} 620 -370 0 0 {name=l2 lab=GND}
+C {gnd.sym} 350 -130 0 0 {name=l3 lab=GND}
+C {gnd.sym} 230 -210 0 0 {name=l4 lab=GND}
+C {lab_pin.sym} 670 -290 2 0 {name=p17 sig_type=std_logic lab=V_OUT}
+C {isource.sym} 600 -130 0 0 {name=I0 value=10n}
+C {gnd.sym} 600 -70 0 0 {name=l5 lab=GND}
+C {lab_pin.sym} 230 -330 0 0 {name=p1 sig_type=std_logic lab=V_PLUS}
+C {lab_pin.sym} 350 -250 0 0 {name=p2 sig_type=std_logic lab=V_MINUS}
+C {/foss/designs/Analog_to_Spike/Schematic/OTA.sym} 510 -290 0 0 {name=x1}

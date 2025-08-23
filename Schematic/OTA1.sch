@@ -201,7 +201,7 @@ C {ipin.sym} 860 -480 0 1 {name=p26 lab=vinn}
 C {ipin.sym} 650 -100 0 1 {name=p27 lab=vss}
 C {opin.sym} 1050 -570 0 0 {name=p23 lab=vout}
 C {ipin.sym} 470 -590 0 0 {name=p1 lab=ibias}
-C {sky130_fd_pr/pfet_01v8.sym} 360 -870 0 1 {name=M11
+C {sky130_fd_pr/pfet_01v8.sym} 360 -870 0 1 {name=M7
 W=2
 L=2
 nf=1
@@ -215,7 +215,7 @@ sa=0 sb=0 sd=0
 model=pfet_01v8
 spiceprefix=X
 }
-C {sky130_fd_pr/pfet_01v8.sym} 630 -700 0 0 {name=M14
+C {sky130_fd_pr/pfet_01v8.sym} 630 -700 0 0 {name=M10
 W=10
 L=2
 nf=1
