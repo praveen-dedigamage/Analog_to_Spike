@@ -84,7 +84,7 @@ N 470 -670 470 -650 {lab=ibias}
 N 340 -640 340 -580 {lab=#net4}
 N 960 -640 960 -580 {lab=vout}
 C {sky130_fd_pr/pfet_01v8.sym} 530 -480 0 0 {name=M1
-W=10
+W=14
 L=2
 nf=1
 mult=1
@@ -126,7 +126,7 @@ model=nfet_01v8
 spiceprefix=X
 }
 C {sky130_fd_pr/pfet_01v8.sym} 770 -480 0 1 {name=M2
-W=10
+W=14
 L=2
 nf=1
 mult=1
